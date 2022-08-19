@@ -28,3 +28,12 @@ for i in range(1,num+1):
 lst1=['*' * n for n in range(1,num+1)]
 for str in lst1:
   print(str)
+
+lst1=[(5,7),(2,3),(11,2),(10,1)]
+sorted(lst1,key=lambda pair:pair[0])
+print(sorted(lst1))
+print(sorted(lst1,reverse=True))
+
+def sum_all(a,b,*more):
+    return a + b + sum(int(i) for i in more)
+print(sum_all(1,2,3,4,5))
