@@ -42,8 +42,8 @@ my_policy_publisher={
 }
 
 def create_user_boto3(user_name):
-    client = boto3.client('iam', aws_access_key_id='AKIATTINKXQJW4ME6EXV',
-                                      aws_secret_access_key='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',
+    client = boto3.client('iam', aws_access_key_id='***',
+                                      aws_secret_access_key='***',
                                       region_name='us-east-1')
     response = client.create_user(UserName =  user_name)
     print('User created: ', response['User'])
@@ -52,8 +52,8 @@ def create_user_boto3(user_name):
     print('All Users: ', users['Users'])
 
 def create_policy_and_attach(user_name, my_policy, policy_name):
-    client = boto3.client('iam', aws_access_key_id='AKIATTINKXQJW4ME6EXV',
-                                      aws_secret_access_key='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',
+    client = boto3.client('iam', aws_access_key_id='***',
+                                      aws_secret_access_key='***',
                                       region_name='us-east-1')
 
     response = client.create_policy(PolicyName=policy_name, PolicyDocument=json.dumps(my_policy))
@@ -71,8 +71,8 @@ def download_file_from_s3(file1):
     client.download_file('s3-my-demo', file1, file1)
 
 def create_event_notification(bucket_name):
-    client = boto3.client('sns', aws_access_key_id='AKIATTINKXQJW4ME6EXV',
-                                      aws_secret_access_key='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',
+    client = boto3.client('sns', aws_access_key_id='***',
+                                      aws_secret_access_key='***',
                                       region_name='us-east-1')
     sns_topic_arn= client.list_topics()['Topics'][1]['TopicArn']
 
