@@ -28,7 +28,7 @@ def get_conf(conf_file):
 
 
 def dynamodb_demo():
-    creds = get_conf('aws/cred.json')
+    creds = get_conf('cred.json')
     print(creds)
     client = boto3.client('dynamodb', aws_access_key_id=creds['access-key-id'],
                                       aws_secret_access_key=creds['secret-access-key'],
@@ -36,13 +36,30 @@ def dynamodb_demo():
     insert_into_people(client, 'Dave', "09-________")
     insert_into_people(client, 'Aisha', "09-^^^^^^^^")
 
-def dynamodb_hash(file_name):
+def calculate_file_hash(file_name):
     print(file_name)
     with open(file_name,"rb") as f:
         bytes = f.read() # read entire file as bytes
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
+def upload_file_to_s3(file1):
+    creds = get_conf('cred.json')
+    print(creds)
+    client = boto3.client('s3', aws_access_key_id=creds['access-key-id'],
+                                aws_secret_access_key=creds['secret-access-key'],
+                                region_name=creds['region'])
+    client.upload_file(file1, 's3-demo33', file1)
+
+def download_file_from_s3(file1):
+    creds = get_conf('cred.json')
+    print(creds)
+    client = boto3.client('s3', aws_access_key_id=creds['access-key-id'],
+                                aws_secret_access_key=creds['secret-access-key'],
+                                region_name=creds['region'])
+    client.download_file('s3-demo33', file1, file1)
+
 
 #dynamodb_demo()
-dynamodb_hash('f1.txt')
+upload_file_to_s3('f1.txt')
+calculate_file_hash('f1.txt')
