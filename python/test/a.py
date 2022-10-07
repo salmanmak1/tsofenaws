@@ -36,4 +36,4 @@ print(sorted(lst1,reverse=True))
 
 def sum_all(a,b,*more):
     return a + b + sum(int(i) for i in more)
-print(sum_all(1,2,3,4,5))
+print(sum_all(1,2,3,4,6))
