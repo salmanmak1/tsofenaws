@@ -1,0 +1,2 @@
+sudo docker build --no-cache .
+sudo docker run 56f7f4147c91

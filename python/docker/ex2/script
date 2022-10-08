@@ -1,0 +1,2 @@
+sudo docker pull tomcat:9.0-jdk8-temurin-jammy
+sudo docker image inspect tomcat:9.0-jdk8-temurin-jammy
