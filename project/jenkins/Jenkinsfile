@@ -4,6 +4,8 @@ pipeline {
         stage('Pre Build') {
             steps {
                 echo 'Pre Build'
+                sh 'python --version'
+                sh 'pwd'
             }
         }        
         stage('Checkout Code') {
@@ -11,11 +13,18 @@ pipeline {
                 echo 'Code is already checked out'
             }
         }
-        stage('Build') {
+        stage('Build and Run Code') {
             steps {
-                sh 'python --version'
-                sh 'pwd'
                 dir('project/code')
+                {
+                    sh 'ls'
+                    sh 'python *.py'
+                }
+            }
+        }
+        stage('Run Unit Tests') {
+            steps {
+                dir('project/tests')
                 {
                     sh 'ls'
                     sh 'python *.py'
@@ -25,7 +34,7 @@ pipeline {
     }
     post { 
         always { 
-            echo 'Post Build'
+            echo 'Post Build Cleaning...'
         }
     }
 }
