@@ -1,22 +1,29 @@
 pipeline {
     agent { docker { image 'python:3.10.7-alpine' } }
     stages {
-        stage('Example') {
+        stage('Pre Build') {
             steps {
-                echo 'Hello World'
+                echo 'Pre Build'
+            }
+        }        
+        stage('Checkout Code') {
+            steps {
+                echo 'Code is already checked out'
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'python --version'
-                sh 'ls'
                 sh 'pwd'
+                sh 'cd project/code'
+                sh 'ls'
+                sh 'python *.py'
             }
         }
     }
     post { 
         always { 
-            echo 'post Hello World'
+            echo 'Post Build'
         }
     }
 }
