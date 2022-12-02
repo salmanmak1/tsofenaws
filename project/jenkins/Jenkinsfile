@@ -4,7 +4,6 @@ pipeline {
         stage('Pre Build') {
             steps {
                 echo 'Pre Build'
-                sh 'docker ps'
                 sh 'python --version'
                 sh 'pwd'
             }
