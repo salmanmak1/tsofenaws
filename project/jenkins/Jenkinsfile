@@ -33,6 +33,22 @@ pipeline {
         }
     }
     post { 
+        success {
+            script {
+                echo 'Build Passed'
+                if (env.CHANGE_ID) {
+                    pullRequest.addLabel('Jenkins Build Passed')
+                }
+            }
+        }
+        failure {
+            script {
+                echo 'Build Failed'
+                if (env.CHANGE_ID) {
+                    pullRequest.addLabel('Jenkins Build Failed')
+                }
+            }
+        }
         always { 
             echo 'Post Build Cleaning...'
         }
