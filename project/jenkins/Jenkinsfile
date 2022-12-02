@@ -36,6 +36,7 @@ pipeline {
         success {
             script {
                 echo 'Build Passed'
+                echo env.CHANGE_ID
                 if (env.CHANGE_ID) {
                     pullRequest.addLabel('Jenkins Build Passed')
                 }
@@ -44,6 +45,7 @@ pipeline {
         failure {
             script {
                 echo 'Build Failed'
+                echo env.CHANGE_ID
                 if (env.CHANGE_ID) {
                     pullRequest.addLabel('Jenkins Build Failed')
                 }
