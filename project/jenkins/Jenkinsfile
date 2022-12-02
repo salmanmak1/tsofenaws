@@ -6,11 +6,11 @@ pipeline {
     stages {
         stage('Pre Build') {
             steps {
-                echo "$env.CHANGE_ID"
-                echo "${pullRequest.id}"
                 echo 'Pre Build'
                 sh 'python --version'
                 sh 'pwd'
+                echo "$env.CHANGE_ID"
+                echo "${pullRequest.id}"
             }
         }        
         stage('Checkout Code') {
