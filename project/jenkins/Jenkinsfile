@@ -4,7 +4,7 @@ pipeline {
         stage('Pre Build') {
             steps {
                 echo "$env.CHANGE_ID"
-                echo ${pullRequest.id}
+                echo "${pullRequest.id}"
                 echo 'Pre Build'
                 sh 'python --version'
                 sh 'pwd'
@@ -39,7 +39,7 @@ pipeline {
             script {
                 echo 'Build Passed'
                 echo "$env.CHANGE_ID"
-                echo ${pullRequest.id}
+                echo "${pullRequest.id}"
                 if (env.CHANGE_ID) {
                     pullRequest.addLabel('Jenkins Build Passed')
                 }
