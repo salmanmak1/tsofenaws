@@ -7,10 +7,13 @@ pipeline {
         stage('Pre Build') {
             steps {
                 echo 'Pre Build'
+                echo "GITHUB_PR_NUMBER=${env.GITHUB_PR_NUMBER}"
+                echo "GITHUB_PR_STATE=${env.GITHUB_PR_STATE}"
+                echo "GITHUB_PR_SHORT_DESC=${env.GITHUB_PR_SHORT_DESC}"
+                echo "GITHUB_PR_TITLE=${env.GITHUB_PR_TITLE}"
+                echo "GITHUB_PR_URL=${env.GITHUB_PR_URL}"
                 sh 'python --version'
                 sh 'pwd'
-                echo "$env.CHANGE_ID"
-                echo "${pullRequest.id}"
             }
         }        
         stage('Checkout Code') {
@@ -41,19 +44,16 @@ pipeline {
         success {
             script {
                 echo 'Build Passed'
-                echo "$env.CHANGE_ID"
-                echo "${pullRequest.id}"
-                if (env.CHANGE_ID) {
-                    pullRequest.addLabel('Jenkins Build Passed')
+                if (env.GITHUB_PR_NUMBER) {
+                    //pullRequest.addLabel('Jenkins Build Passed')
                 }
             }
         }
         failure {
             script {
                 echo 'Build Failed'
-                echo env.CHANGE_ID
-                if (env.CHANGE_ID) {
-                    pullRequest.addLabel('Jenkins Build Failed')
+                if (env.GITHUB_PR_NUMBER) {
+                    //pullRequest.addLabel('Jenkins Build Failed')
                 }
             }
         }
