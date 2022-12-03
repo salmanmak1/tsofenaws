@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Pre Build') {
             steps {
+                sh 'apt-get install curl -y'
                 echo 'Pre Build'
                 echo "GITHUB_PR_NUMBER=${env.GITHUB_PR_NUMBER}"
                 echo "GITHUB_PR_STATE=${env.GITHUB_PR_STATE}"
