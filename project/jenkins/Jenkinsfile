@@ -1,5 +1,4 @@
 import jenkins.model.*
-//jenkins = Jenkins.instance
 
 pipeline {
     //agent { docker { image 'python:3.10.7-alpine' } }
@@ -14,6 +13,8 @@ pipeline {
                 echo "GITHUB_PR_SHORT_DESC=${env.GITHUB_PR_SHORT_DESC}"
                 echo "GITHUB_PR_TITLE=${env.GITHUB_PR_TITLE}"
                 echo "GITHUB_PR_URL=${env.GITHUB_PR_URL}"
+                echo "GITHUB_PR_SOURCE_BRANCH=${env.GITHUB_PR_SOURCE_BRANCH}"
+                echo "GITHUB_PR_TARGET_BRANCH=${env.GITHUB_PR_TARGET_BRANCH}"
                 sh 'python --version'
                 sh 'pwd'
             }
