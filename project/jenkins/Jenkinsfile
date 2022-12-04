@@ -59,6 +59,12 @@ pipeline {
                         curl -s -X POST -H "Authorization: token ${GITHUB_TOKEN}" --data '{"body":"Pull Request Approved after passing jenkins build","event":"APPROVE"}' https://api.github.com/repos/salmanmak1/tsofenaws/pulls/${GITHUB_PR_NUMBER}/reviews
                         """
                     }
+                    
+                    withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
+                        sh """
+                        curl -s -X PUT -H "Authorization: token ${GITHUB_TOKEN}" --data '{"commit_title":"Merged by system","commit_message":"Merged after passing jenkins build"}' https://api.github.com/repos/salmanmak1/tsofenaws/pulls/${GITHUB_PR_NUMBER}/merge
+                        """
+                    }
                 }
             }
         }
