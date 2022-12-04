@@ -7,7 +7,8 @@ class calc():
         return self.a+self.b
 
     def sub(self):
-        return self.a-self.b
+        #fix for bug #1
+        return self.b-self.a
 
     def mul(self):
         return self.a*self.b
