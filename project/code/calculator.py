@@ -4,7 +4,6 @@ class calc():
         self.b=b
 
     def add(self):
-        #fix
         return self.a+self.b
 
     def sub(self):
