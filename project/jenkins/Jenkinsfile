@@ -42,12 +42,27 @@ pipeline {
                 }
             }
         }
+        stage('Run Sonar to catch Clean Code issues') {
+            steps {
+                echo 'TODO: Sonar not implemented yet'
+            }
+        }
+        stage('Run Security Checks to catch vulnerability inside Dependencies') {
+            steps {
+                echo 'TODO: Security Checks inside Dependencies not implemented yet'
+            }
+        }
+        stage('Run Security Checks to catch vulnerability inside Code') {
+            steps {
+                echo 'TODO: Security Checks inside Code not implemented yet'
+            }
+        }
     }
     
     post { 
         success {
             script {
-                echo 'Build Passed'
+                echo 'Build Passed. Now going to merge to upstream...'
                 if (env.GITHUB_PR_NUMBER) {
                     echo 'Add successful comment to PR via github API'
                     withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
@@ -74,7 +89,7 @@ pipeline {
         }
         failure {
             script {
-                echo 'Build Failed'
+                echo 'Build Failed. Merge will be rejected...'
                 if (env.GITHUB_PR_NUMBER) {
                     echo 'Add failure comment to PR via github API'
                     withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
@@ -91,9 +106,6 @@ pipeline {
                     }
                 }
             }
-        }
-        always { 
-            echo 'Post Build Cleaning...'
         }
     }
 }
