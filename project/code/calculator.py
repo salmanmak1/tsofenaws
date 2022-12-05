@@ -3,8 +3,7 @@ class calc():
         self.a=a
         self.b=b
 
-    def add(self):
-        #fix2        
+    def add(self):     
         return self.a+self.b
 
     def sub(self):
