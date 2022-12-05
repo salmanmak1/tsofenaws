@@ -4,8 +4,8 @@ class calc():
         self.b=b
 
     def add(self):
-        #fix        
-        return self.a-self.b
+        #fix2        
+        return self.a+self.b
 
     def sub(self):
         return self.a-self.b
