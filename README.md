@@ -14,7 +14,7 @@ This repository contains the following stuff:
       - Application code is run and checked
       - Application unit tests are run and checked
       - Application clean code quality review are run and checked (not implemented)
-      - Application security code quality review are run and checked (not implemented)
+      - Application security code review are run and checked (not implemented)
       - In case of success:
         - Add successful comment to PR via github API
         - Approve PR via github API
@@ -22,5 +22,5 @@ This repository contains the following stuff:
       - In case of failure:
         - Add failure comment to PR via github API
         - Reject PR and Request changes via github API
-    - Project High Level Design:
-        
+    - Project flow chart:
+      - ![flow chart](./project/jenkins/project_flow.png)
