@@ -23,4 +23,4 @@ This repository contains the following stuff:
         - Add failure comment to PR via github API
         - Reject PR and Request changes via github API
     - Project flow chart:
-      - ![flow chart](./project/jenkins/project_flow.png)
+      ![flow chart](./project/jenkins/project_flow.png)
