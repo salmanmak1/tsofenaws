@@ -24,9 +24,13 @@ This repository contains the following stuff:
         - Reject PR and Request changes via github API
     - Steps done to run the project:
       - EC2 is created in order to install Jenkins instance.
-      - Dockerized Jenkins is installed under EC2. Follow the file under: ./project/jenkins/docker-compose.yaml
+      - Dockerized Jenkins is installed under EC2. Follow the file under: ./project/jenkins/docker-compose.yaml and the following instructions:
+        - sudo apt-get update
+        - sudo apt-get install docker-compose -y
+        - docker-compose up -d
       - The following jenkins plugins are installed in order to catch pull requests (open and reopen):
-        - GitHub Integration
+        - "GitHub Integration Plugin"
+        - "Pipeline: GitHub"
       - Github webhook is created to trigger jenkins api once pull request is created. Follow the following webhook configurations:
         - Example for Payload URL: "http://<span></span>3.81.229.45:8080/github-webhook/"
         - Choose the radio button: "Let me select individual events"
