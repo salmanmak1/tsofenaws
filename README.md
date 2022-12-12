@@ -28,7 +28,7 @@ This repository contains the following stuff:
       - The following jenkins plugins are installed in order to catch pull requests (open and reopen):
         - GitHub Integration
       - Github webhook is created to trigger jenkins api once pull request is created. Follow the following webhook configurations:
-        - Example for Payload URL: "http://3.81.229.45:8080/github-webhook/"
+        - Example for Payload URL: "http://<span></span>3.81.229.45:8080/github-webhook/"
         - Choose the radio button: "Let me select individual events"
         - Select the checkbox: "Pull requests"
       - Jenkins pipeline is created which implements the automated CI/CD. Follow the Jenkinsfile under: ./project/jenkins/Jenkinsfile
